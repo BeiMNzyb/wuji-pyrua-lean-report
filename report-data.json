@@ -7,6 +7,23 @@
   "formal_summary": {
     "cells:hand_track.place_can_in_box": {
       "successes": 0,
+      "total": 3,
+      "success_rate": 0.0,
+      "wilson_95": [
+        5.551115123125783e-17,
+        0.5614970317550454
+      ],
+      "failure_types": {
+        "agent_finished_unsuccessful": 3
+      },
+      "mean_env_steps": 0.0,
+      "mean_planner_calls": 7.333333333333333,
+      "mean_input_tokens": 83215.66666666667,
+      "mean_output_tokens": 22695.0,
+      "mean_wall_time_s": 225.93891617764407
+    },
+    "tools:hand_track.place_can_in_box": {
+      "successes": 0,
       "total": 2,
       "success_rate": 0.0,
       "wilson_95": [
@@ -17,30 +34,13 @@
         "agent_finished_unsuccessful": 2
       },
       "mean_env_steps": 0.0,
-      "mean_planner_calls": 8.5,
-      "mean_input_tokens": 81724.5,
-      "mean_output_tokens": 19304.5,
-      "mean_wall_time_s": 195.9600278721191
-    },
-    "tools:hand_track.place_can_in_box": {
-      "successes": 0,
-      "total": 1,
-      "success_rate": 0.0,
-      "wilson_95": [
-        0.0,
-        0.7934506856227626
-      ],
-      "failure_types": {
-        "agent_finished_unsuccessful": 1
-      },
-      "mean_env_steps": 0.0,
-      "mean_planner_calls": 15.0,
-      "mean_input_tokens": 103866.0,
-      "mean_output_tokens": 5516.0,
-      "mean_wall_time_s": 67.44978241994977
+      "mean_planner_calls": 29.0,
+      "mean_input_tokens": 461947.0,
+      "mean_output_tokens": 9047.5,
+      "mean_wall_time_s": 114.55224082246423
     }
   },
-  "formal_episode_count": 3,
+  "formal_episode_count": 5,
   "formal_episodes": [
     {
       "task": "hand_track.place_can_in_box",
@@ -80,6 +80,24 @@
     },
     {
       "task": "hand_track.place_can_in_box",
+      "instance_id": "i034",
+      "instance_split": "eval",
+      "instance_set": "hand_track.place_can_in_box@v5#165c04421e93b597",
+      "instance_checksum": "d0be126ba4a435bf",
+      "seed": 20261032,
+      "arm": "cells",
+      "official_success": false,
+      "failure_type": "agent_finished_unsuccessful",
+      "env_steps": 0,
+      "planner_calls": 5,
+      "input_tokens": 86198,
+      "output_tokens": 29476,
+      "cached_input_tokens": 0,
+      "wall_time_s": 285.89669278869405,
+      "video_href": "videos/formal-002.mp4"
+    },
+    {
+      "task": "hand_track.place_can_in_box",
       "instance_id": "i024",
       "instance_split": "eval",
       "instance_set": "hand_track.place_can_in_box@v5#165c04421e93b597",
@@ -94,7 +112,25 @@
       "output_tokens": 5516,
       "cached_input_tokens": 0,
       "wall_time_s": 67.44978241994977,
-      "video_href": "videos/formal-002.mp4"
+      "video_href": "videos/formal-003.mp4"
+    },
+    {
+      "task": "hand_track.place_can_in_box",
+      "instance_id": "i029",
+      "instance_split": "eval",
+      "instance_set": "hand_track.place_can_in_box@v5#165c04421e93b597",
+      "instance_checksum": "595db7f9774b0463",
+      "seed": 20261031,
+      "arm": "tools",
+      "official_success": false,
+      "failure_type": "agent_finished_unsuccessful",
+      "env_steps": 0,
+      "planner_calls": 43,
+      "input_tokens": 820028,
+      "output_tokens": 12579,
+      "cached_input_tokens": 0,
+      "wall_time_s": 161.65469922497869,
+      "video_href": "videos/formal-004.mp4"
     }
   ]
 }
