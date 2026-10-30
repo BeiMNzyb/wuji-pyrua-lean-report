@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#334155"/></marker>
+    <style>
+      .box{fill:#f8fafc;stroke:#475569;stroke-width:2;rx:14}.agent{fill:#eff6ff}.prim{fill:#ecfdf5}.sim{fill:#fff7ed}.score{fill:#fef2f2}.blocked{fill:#f3f4f6;stroke-dasharray:7 5}.title{font:700 25px sans-serif;fill:#0f172a}.label{font:600 17px sans-serif;fill:#0f172a}.small{font:14px sans-serif;fill:#334155}.arrow{stroke:#334155;stroke-width:2;fill:none;marker-end:url(#arrow)}.dash{stroke-dasharray:7 5}
+    </style>
+  </defs>
+  <text x="40" y="42" class="title">PyRUA-Lean × WUJI：信息边界与真实闭环</text>
+  <rect x="40" y="85" width="245" height="115" class="box agent"/>
+  <text x="65" y="120" class="label">规划模型（独立层）</text>
+  <text x="65" y="148" class="small">PyRUA-Lean Coder v0.1-4B</text>
+  <text x="65" y="172" class="small">SGLang / 固定 revision</text>
+  <rect x="340" y="85" width="250" height="115" class="box agent"/>
+  <text x="365" y="120" class="label">Agent 框架</text>
+  <text x="365" y="148" class="small">持久 Python cells ↔ 单原语对照</text>
+  <text x="365" y="172" class="small">沙箱、40 次决策、按需图像</text>
+  <rect x="650" y="85" width="230" height="115" class="box prim"/>
+  <text x="675" y="120" class="label">robo 基础原语</text>
+  <text x="675" y="148" class="small">IK / 手型 / RGB-D / 状态</text>
+  <text x="675" y="172" class="small">无 ACT、无 VLA、无 SAM3</text>
+  <rect x="935" y="85" width="225" height="115" class="box sim"/>
+  <text x="960" y="120" class="label">XPolicyLab Bridge</text>
+  <text x="960" y="148" class="small">wait / action / trial_end</text>
+  <text x="960" y="172" class="small">54 维命名位置目标</text>
+  <path d="M285 142 H340" class="arrow"/><path d="M590 142 H650" class="arrow"/><path d="M880 142 H935" class="arrow"/>
+  <rect x="820" y="300" width="340" height="140" class="box sim"/>
+  <text x="845" y="338" class="label">WUJI client / Isaac Sim 5 / PhysX</text>
+  <text x="845" y="368" class="small">tianji_wuji：双臂 14 + 双手 40 = 54 DOF</text>
+  <text x="845" y="394" class="small">PD 步进、实例、资产、视频、官方 checker</text>
+  <path d="M1045 200 V300" class="arrow"/>
+  <rect x="390" y="300" width="340" height="140" class="box prim"/>
+  <text x="415" y="338" class="label">白名单公开观测</text>
+  <text x="415" y="368" class="small">RGB-D、标定、54 关节本体状态</text>
+  <text x="415" y="394" class="small">无物体位姿、无 simulator 分割 ID</text>
+  <path d="M820 370 H730" class="arrow"/>
+  <path d="M560 300 V225 L540 200" class="arrow"/>
+  <rect x="820" y="515" width="340" height="115" class="box score"/>
+  <text x="845" y="553" class="label">官方成功检查器（仅 client）</text>
+  <text x="845" y="583" class="small">逐 tick latch / 最终 verdict / 真实成功率</text>
+  <text x="845" y="607" class="small">不进入 prompt，不驱动 robo.done</text>
+  <path d="M990 440 V515" class="arrow"/>
+  <path d="M820 585 H575 L540 200" class="arrow dash"/>
+  <text x="575" y="605" class="small">仅 episode 结束后写结果；规划期间不回传</text>
+  <rect x="40" y="515" width="245" height="115" class="box blocked"/>
+  <text x="65" y="553" class="label">明确排除的能力</text>
+  <text x="65" y="583" class="small">SAM3 权重许可拒绝</text>
+  <text x="65" y="607" class="small">ACT / VLA 未使用、未训练</text>
+</svg>

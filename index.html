@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PyRUA-Lean × WUJI SimBench 真实闭环复现报告</title>
+<style>
+body{font:16px/1.65 -apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans CJK SC',sans-serif;max-width:1280px;margin:32px auto;padding:0 20px;color:#172033;background:#fff}
+h1{font-size:30px}h2{font-size:23px;margin-top:36px;border-bottom:2px solid #dbe4ef;padding-bottom:6px}h3{font-size:19px;margin-top:26px}
+.notice{background:#fff7ed;border-left:5px solid #ea580c;padding:14px 18px}.blocked{background:#fef2f2;border-left:5px solid #dc2626;padding:14px 18px}
+.ok{background:#ecfdf5;border-left:5px solid #059669;padding:14px 18px}code{background:#f1f5f9;padding:2px 5px}table{border-collapse:collapse;width:100%;font-size:14px}th,td{border:1px solid #cbd5e1;padding:7px;text-align:left;vertical-align:top}th{background:#f1f5f9}img{max-width:100%;height:auto}video{max-width:360px;width:100%;margin:8px}.small{font-size:13px;color:#475569}
+</style></head><body>
+<h1>PyRUA-Lean × WUJI SimBench 真实闭环复现报告</h1>
+<p>本页只把 WUJI 官方 checker 的真实自主闭环结果计为本项目成功率。论文在其他基准的数字、示范轨迹和单个视频不代替本项目的分母或成功率。</p>
+<div class="notice"><strong>能力组：</strong>RGB-D + pyroki IK + 规划器视觉选点；不使用 ACT/VLA。SAM3 权重许可检查失败，因此本组没有 <code>locate/segment</code>。没有训练 PyRUA-Lean。</div>
+<h2>方法与架构</h2>
+<p>规划模型编写持久 Python cells；<code>robo</code> 原语执行动作并返回结构化测量结果。一个 cell 可以检查到位误差、条件重试并只按需请求图像。沙箱限制导入和文件访问，调用/时间预算约束执行。agent 框架、规划模型、基础原语和可选 ACT/VLA 是不同层。</p>
+<img src="architecture.svg" alt="PyRUA-Lean 与 WUJI 的信息边界和真实闭环架构图">
+<h2>任务盘点与选择</h2>
+<p>实际 registry 加载得到 163 个注册键、71 个 hand_track 定义。五个候选均经过 Isaac Sim 5 / PhysX 初始化、真实首帧、有限关节状态和官方 checker 执行检查；保持动作不当作 agent 成功。</p>
+<table><thead><tr><th>任务</th><th>类型</th><th>官方 checker</th><th>步数上限</th><th>实例/eval</th><th>当前证据</th></tr></thead><tbody><tr><td>hand_track.grasp_banana</td><td>单物体抓取提升</td><td>lift_object</td><td>600</td><td>50 / 10</td><td>Isaac 初始化、首帧和官方 checker 已通过；正式能力由闭环结果决定</td></tr><tr><td>hand_track.place_can_in_box</td><td>抓取并放入容器</td><td>place_in_container</td><td>1000</td><td>250 / 50</td><td>Isaac 初始化、首帧和官方 checker 已通过；正式能力由闭环结果决定</td></tr><tr><td>hand_track.bimanual_lift_box</td><td>双臂水平抬箱</td><td>bimanual_lift</td><td>1000</td><td>50 / 10</td><td>Isaac 初始化、首帧和官方 checker 已通过；正式能力由闭环结果决定</td></tr><tr><td>hand_track.stack_cubes</td><td>精确堆叠</td><td>stack_cubes</td><td>2000</td><td>50 / 10</td><td>Isaac 初始化、首帧和官方 checker 已通过；正式能力由闭环结果决定</td></tr><tr><td>hand_track.pour_kettle_cup</td><td>双手长流程倒水</td><td>kettle_pour</td><td>3000</td><td>50 / 10</td><td>Isaac 初始化、首帧和官方 checker 已通过；正式能力由闭环结果决定</td></tr></tbody></table>
+<h2>正式协议</h2>
+<ul>
+<li>物理：Isaac Sim 5 / PhysX；渲染：Isaac raytracing；机器人：tianji_wuji，54 个命名位置关节，100 Hz。</li>
+<li>规划器：固定 revision 的 PyRUA-Lean Coder v0.1-4B；不训练、无跨 episode 记忆。</li>
+<li>cells 与 tool-calling 使用同一规划器、原语、实例、后端、渲染和 checker；每种接口最多 40 次规划调用、5400 秒墙钟。</li>
+<li>每任务每接口 20 个不同初始实例；先官方 eval，再以未用于预试的 train 补足并明确标记，不把 train split 冒充 held-out。实例 ID 和场景 checksum 都不得重复。</li>
+<li>启动失败、planner error、动作异常、超时均保留在分母并单列。成功仅来自官方 checker 的逐 tick latch。</li>
+</ul>
+<h2>正式成功率</h2>
+<table><thead><tr><th>接口:任务</th><th>成功/总数</th><th>成功率</th><th>95% Wilson CI</th><th>失败类型</th><th>平均步数</th><th>规划调用</th><th>输入 tokens</th><th>耗时(s)</th></tr></thead><tbody><tr><td>cells:hand_track.place_can_in_box</td><td>0/2</td><td>0.0%</td><td>[0.0%, 65.8%]</td><td>{&quot;agent_finished_unsuccessful&quot;: 2}</td><td>—</td><td>8.5</td><td>81724.5</td><td>195.9600278721191</td></tr><tr><td>tools:hand_track.place_can_in_box</td><td>0/1</td><td>0.0%</td><td>[0.0%, 79.3%]</td><td>{&quot;agent_finished_unsuccessful&quot;: 1}</td><td>—</td><td>15.0</td><td>103866.0</td><td>67.44978241994977</td></tr></tbody></table>
+<h2>逐集结果</h2><p>逐集 planner 墙钟合计约 0.13 小时；GPU 机会成本不换算为虚构美元账单，本地 API 边际费用为 0。</p><table><thead><tr><th>任务</th><th>实例</th><th>接口</th><th>官方结果</th><th>结束类型</th><th>步数</th><th>规划调用</th><th>输入 tokens</th><th>输出 tokens</th><th>耗时(s)</th><th>证据</th></tr></thead><tbody><tr><td>hand_track.place_can_in_box</td><td>i024</td><td>cells</td><td>失败</td><td>agent_finished_unsuccessful</td><td>0</td><td>11</td><td>96223</td><td>10838</td><td>131.52142968028784</td><td><a href="videos/formal-000.mp4">视频</a></td></tr><tr><td>hand_track.place_can_in_box</td><td>i029</td><td>cells</td><td>失败</td><td>agent_finished_unsuccessful</td><td>0</td><td>6</td><td>67226</td><td>27771</td><td>260.39862606395036</td><td><a href="videos/formal-001.mp4">视频</a></td></tr><tr><td>hand_track.place_can_in_box</td><td>i024</td><td>tools</td><td>失败</td><td>agent_finished_unsuccessful</td><td>0</td><td>15</td><td>103866</td><td>5516</td><td>67.44978241994977</td><td><a href="videos/formal-002.mp4">视频</a></td></tr></tbody></table>
+<h2>预试记录（不计正式成功率）</h2>
+<table><thead><tr><th>任务</th><th>接口</th><th>官方结果</th><th>步数</th><th>结束类型</th><th>证据</th></tr></thead><tbody><tr><td>hand_track.grasp_banana</td><td>cells</td><td>失败</td><td>0</td><td>agent_finished_unsuccessful</td><td><a href="videos/pilot-00.mp4">自主闭环视频</a></td></tr><tr><td>hand_track.bimanual_lift_box</td><td>cells</td><td>失败</td><td>400</td><td>agent_finished_unsuccessful</td><td><a href="videos/pilot-01.mp4">自主闭环视频</a></td></tr><tr><td>hand_track.place_can_in_box</td><td>cells</td><td>失败</td><td>300</td><td>agent_finished_unsuccessful</td><td><a href="videos/pilot-02.mp4">自主闭环视频</a></td></tr><tr><td>hand_track.place_can_in_box</td><td>tools</td><td>失败</td><td>0</td><td>agent_finished_unsuccessful</td><td><a href="videos/pilot-03.mp4">自主闭环视频</a></td></tr><tr><td>hand_track.place_can_in_box</td><td>tools</td><td>失败</td><td>0</td><td>agent_finished_unsuccessful</td><td><a href="videos/pilot-04.mp4">自主闭环视频</a></td></tr><tr><td>hand_track.place_can_in_box</td><td>tools</td><td>失败</td><td>0</td><td>agent_finished_unsuccessful</td><td><a href="videos/pilot-05.mp4">自主闭环视频</a></td></tr><tr><td>hand_track.place_can_in_box</td><td>tools</td><td>失败</td><td>0</td><td>agent_finished_unsuccessful</td><td><a href="videos/pilot-06.mp4">自主闭环视频</a></td></tr><tr><td>hand_track.place_can_in_box</td><td>tools</td><td>失败</td><td>201</td><td>agent_finished_unsuccessful</td><td><a href="videos/pilot-07.mp4">自主闭环视频</a></td></tr><tr><td>hand_track.pour_kettle_cup</td><td>cells</td><td>失败</td><td>200</td><td>agent_finished_unsuccessful</td><td><a href="videos/pilot-08.mp4">自主闭环视频</a></td></tr></tbody></table>
+<h2>代表性真实闭环视频</h2><p>当前没有官方成功的 episode，因此没有成功视频可展示；以下仅展示真实失败，不伪造成功。</p><figure style="display:inline-block;vertical-align:top"><video controls preload="metadata" src="videos/formal-000.mp4"></video><figcaption>hand_track.place_can_in_box / cells / 失败 / 自主闭环</figcaption></figure><p><a href="wuji-pyrua-lean-offline.zip">下载离线报告包（含网页与视频）</a></p>
+<h2>论文数字（仅背景，不是 WUJI 结果）</h2>
+<p>论文在 LIBERO-PRO、RoboTwin 2.0、RoboCasa365 的 700 个实例上报告 71.7%（tool-calling 63.1%）；作者 RoboDojo 运行报告 51.62%。这些数字不参与本页任何 WUJI 计算。</p>
+<h2>限制、碰撞与后续审查</h2>
+<ul>
+<li>SAM3 权重许可未通过，因此使用显式 RGB-D 基础原语，不能与 SAM3 方案比较成功率。</li>
+<li>IK 使用 coarse self-collision 模型且 recording parity 权重为 0；真实 USD 警告、关节漂移和穿模不能仅从视频外观排除，应结合日志审查。</li>
+<li>所选任务结果不能外推到整个 WUJI。4B 规划器与论文 GPT-6 Astra 不同。</li>
+<li>适配代码先留在独立工作区。建议审查信息边界、54 维映射、坐标变换和测试后，再在专用 worktree 提交小 PR；本次未合并。</li>
+</ul>
+<p class="small">离线版本包含本 HTML、架构图、派生 JSON 与公开视频，无凭据、私有原始示范或绝对服务器路径。</p>
+</body></html>
