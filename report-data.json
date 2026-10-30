@@ -17,6 +17,25 @@
   "formal_summary": {
     "cells:hand_track.bimanual_lift_box": {
       "successes": 0,
+      "total": 6,
+      "success_rate": 0.0,
+      "wilson_95": [
+        2.7755575615628914e-17,
+        0.3903342879021653
+      ],
+      "failure_types": {
+        "timeout": 2,
+        "agent_finished_unsuccessful": 3,
+        "infrastructure_error": 1
+      },
+      "mean_env_steps": 493.6666666666667,
+      "mean_planner_calls": 10.0,
+      "mean_input_tokens": 146258.66666666666,
+      "mean_output_tokens": 20294.0,
+      "mean_wall_time_s": 255.84741217630233
+    },
+    "tools:hand_track.bimanual_lift_box": {
+      "successes": 0,
       "total": 5,
       "success_rate": 0.0,
       "wilson_95": [
@@ -24,32 +43,14 @@
         0.43448246478317476
       ],
       "failure_types": {
-        "timeout": 2,
-        "agent_finished_unsuccessful": 3
-      },
-      "mean_env_steps": 592.4,
-      "mean_planner_calls": 11.6,
-      "mean_input_tokens": 173742.8,
-      "mean_output_tokens": 23838.8,
-      "mean_wall_time_s": 302.81709461156277
-    },
-    "tools:hand_track.bimanual_lift_box": {
-      "successes": 0,
-      "total": 4,
-      "success_rate": 0.0,
-      "wilson_95": [
-        0.0,
-        0.4898908364545973
-      ],
-      "failure_types": {
         "timeout": 1,
-        "agent_finished_unsuccessful": 3
+        "agent_finished_unsuccessful": 4
       },
-      "mean_env_steps": 500.25,
-      "mean_planner_calls": 25.25,
-      "mean_input_tokens": 398661.5,
-      "mean_output_tokens": 8908.25,
-      "mean_wall_time_s": 157.05618875823262
+      "mean_env_steps": 460.2,
+      "mean_planner_calls": 23.8,
+      "mean_input_tokens": 357523.6,
+      "mean_output_tokens": 8983.8,
+      "mean_wall_time_s": 149.91912650838717
     },
     "cells:hand_track.place_can_in_box": {
       "successes": 0,
@@ -87,7 +88,7 @@
       "mean_wall_time_s": 96.19243586685043
     }
   },
-  "formal_episode_count": 49,
+  "formal_episode_count": 51,
   "expected_episode_count": 120,
   "evaluation_complete": false,
   "integrity": {
@@ -214,6 +215,27 @@
       "video_href": "videos/formal-004.mp4"
     },
     {
+      "task": "hand_track.bimanual_lift_box",
+      "instance_id": "i045",
+      "instance_split": "eval",
+      "instance_set": "hand_track.bimanual_lift_box@v3#4b65056dfbd60be0",
+      "instance_checksum": "0de2ac5dd2d23871",
+      "seed": 20261035,
+      "arm": "cells",
+      "official_success": false,
+      "failure_type": "infrastructure_error",
+      "env_steps": 0,
+      "planner_calls": 2,
+      "input_tokens": 8838,
+      "output_tokens": 2570,
+      "cached_input_tokens": 0,
+      "wall_time_s": 20.999,
+      "planner_status": "interrupted",
+      "planner_metrics_source": "openai_events",
+      "planner_metrics_complete": true,
+      "video_href": "videos/formal-005.mp4"
+    },
+    {
       "task": "hand_track.place_can_in_box",
       "instance_id": "i024",
       "instance_split": "eval",
@@ -230,7 +252,7 @@
       "cached_input_tokens": 0,
       "wall_time_s": 131.52142968028784,
       "planner_status": "completed",
-      "video_href": "videos/formal-005.mp4"
+      "video_href": "videos/formal-006.mp4"
     },
     {
       "task": "hand_track.place_can_in_box",
@@ -249,7 +271,7 @@
       "cached_input_tokens": 0,
       "wall_time_s": 260.39862606395036,
       "planner_status": "completed",
-      "video_href": "videos/formal-006.mp4"
+      "video_href": "videos/formal-007.mp4"
     },
     {
       "task": "hand_track.place_can_in_box",
@@ -268,7 +290,7 @@
       "cached_input_tokens": 0,
       "wall_time_s": 285.89669278869405,
       "planner_status": "completed",
-      "video_href": "videos/formal-007.mp4"
+      "video_href": "videos/formal-008.mp4"
     },
     {
       "task": "hand_track.place_can_in_box",
@@ -287,7 +309,7 @@
       "cached_input_tokens": 0,
       "wall_time_s": 231.09153121011332,
       "planner_status": "completed",
-      "video_href": "videos/formal-008.mp4"
+      "video_href": "videos/formal-009.mp4"
     },
     {
       "task": "hand_track.place_can_in_box",
@@ -306,7 +328,7 @@
       "cached_input_tokens": 0,
       "wall_time_s": 236.28093614522368,
       "planner_status": "completed",
-      "video_href": "videos/formal-009.mp4"
+      "video_href": "videos/formal-010.mp4"
     },
     {
       "task": "hand_track.place_can_in_box",
@@ -325,7 +347,7 @@
       "cached_input_tokens": 0,
       "wall_time_s": 277.486632630229,
       "planner_status": "completed",
-      "video_href": "videos/formal-010.mp4"
+      "video_href": "videos/formal-011.mp4"
     },
     {
       "task": "hand_track.place_can_in_box",
@@ -344,7 +366,7 @@
       "cached_input_tokens": 0,
       "wall_time_s": 231.32993884105235,
       "planner_status": "completed",
-      "video_href": "videos/formal-011.mp4"
+      "video_href": "videos/formal-012.mp4"
     },
     {
       "task": "hand_track.place_can_in_box",
@@ -363,7 +385,7 @@
       "cached_input_tokens": 0,
       "wall_time_s": 1301.0623458749615,
       "planner_status": "planner_error",
-      "video_href": "videos/formal-012.mp4"
+      "video_href": "videos/formal-013.mp4"
     },
     {
       "task": "hand_track.place_can_in_box",
@@ -382,7 +404,7 @@
       "cached_input_tokens": 0,
       "wall_time_s": 15.363937660120428,
       "planner_status": "completed",
-      "video_href": "videos/formal-013.mp4"
+      "video_href": "videos/formal-014.mp4"
     },
     {
       "task": "hand_track.place_can_in_box",
@@ -401,7 +423,7 @@
       "cached_input_tokens": 0,
       "wall_time_s": 573.9268532120623,
       "planner_status": "completed",
-      "video_href": "videos/formal-014.mp4"
+      "video_href": "videos/formal-015.mp4"
     },
     {
       "task": "hand_track.place_can_in_box",
@@ -420,7 +442,7 @@
       "cached_input_tokens": 0,
       "wall_time_s": 121.24916168488562,
       "planner_status": "completed",
-      "video_href": "videos/formal-015.mp4"
+      "video_href": "videos/formal-016.mp4"
     },
     {
       "task": "hand_track.place_can_in_box",
@@ -439,7 +461,7 @@
       "cached_input_tokens": 0,
       "wall_time_s": 227.7501092888415,
       "planner_status": "completed",
-      "video_href": "videos/formal-016.mp4"
+      "video_href": "videos/formal-017.mp4"
     },
     {
       "task": "hand_track.place_can_in_box",
@@ -458,7 +480,7 @@
       "cached_input_tokens": 0,
       "wall_time_s": 248.616654407233,
       "planner_status": "completed",
-      "video_href": "videos/formal-017.mp4"
+      "video_href": "videos/formal-018.mp4"
     },
     {
       "task": "hand_track.place_can_in_box",
@@ -477,7 +499,7 @@
       "cached_input_tokens": 0,
       "wall_time_s": 371.5466156490147,
       "planner_status": "completed",
-      "video_href": "videos/formal-018.mp4"
+      "video_href": "videos/formal-019.mp4"
     },
     {
       "task": "hand_track.place_can_in_box",
@@ -496,7 +518,7 @@
       "cached_input_tokens": 0,
       "wall_time_s": 29.959211585111916,
       "planner_status": "completed",
-      "video_href": "videos/formal-019.mp4"
+      "video_href": "videos/formal-020.mp4"
     },
     {
       "task": "hand_track.place_can_in_box",
@@ -515,7 +537,7 @@
       "cached_input_tokens": 0,
       "wall_time_s": 238.23840574501082,
       "planner_status": "completed",
-      "video_href": "videos/formal-020.mp4"
+      "video_href": "videos/formal-021.mp4"
     },
     {
       "task": "hand_track.place_can_in_box",
@@ -534,7 +556,7 @@
       "cached_input_tokens": 0,
       "wall_time_s": 141.9229284268804,
       "planner_status": "completed",
-      "video_href": "videos/formal-021.mp4"
+      "video_href": "videos/formal-022.mp4"
     },
     {
       "task": "hand_track.place_can_in_box",
@@ -553,7 +575,7 @@
       "cached_input_tokens": 0,
       "wall_time_s": 285.93367688311264,
       "planner_status": "completed",
-      "video_href": "videos/formal-022.mp4"
+      "video_href": "videos/formal-023.mp4"
     },
     {
       "task": "hand_track.place_can_in_box",
@@ -572,7 +594,7 @@
       "cached_input_tokens": 0,
       "wall_time_s": 394.2548010526225,
       "planner_status": "completed",
-      "video_href": "videos/formal-023.mp4"
+      "video_href": "videos/formal-024.mp4"
     },
     {
       "task": "hand_track.place_can_in_box",
@@ -591,7 +613,7 @@
       "cached_input_tokens": 0,
       "wall_time_s": 168.0679153809324,
       "planner_status": "completed",
-      "video_href": "videos/formal-024.mp4"
+      "video_href": "videos/formal-025.mp4"
     },
     {
       "task": "hand_track.bimanual_lift_box",
@@ -612,7 +634,7 @@
       "planner_status": "interrupted",
       "planner_metrics_source": "openai_events",
       "planner_metrics_complete": true,
-      "video_href": "videos/formal-025.mp4"
+      "video_href": "videos/formal-026.mp4"
     },
     {
       "task": "hand_track.bimanual_lift_box",
@@ -631,7 +653,7 @@
       "cached_input_tokens": 0,
       "wall_time_s": 163.00050038006157,
       "planner_status": "completed",
-      "video_href": "videos/formal-026.mp4"
+      "video_href": "videos/formal-027.mp4"
     },
     {
       "task": "hand_track.bimanual_lift_box",
@@ -650,7 +672,7 @@
       "cached_input_tokens": 0,
       "wall_time_s": 85.49996291100979,
       "planner_status": "completed",
-      "video_href": "videos/formal-027.mp4"
+      "video_href": "videos/formal-028.mp4"
     },
     {
       "task": "hand_track.bimanual_lift_box",
@@ -669,7 +691,26 @@
       "cached_input_tokens": 0,
       "wall_time_s": 159.51129174185917,
       "planner_status": "completed",
-      "video_href": "videos/formal-028.mp4"
+      "video_href": "videos/formal-029.mp4"
+    },
+    {
+      "task": "hand_track.bimanual_lift_box",
+      "instance_id": "i044",
+      "instance_split": "eval",
+      "instance_set": "hand_track.bimanual_lift_box@v3#4b65056dfbd60be0",
+      "instance_checksum": "8c89557468acf6db",
+      "seed": 20261034,
+      "arm": "tools",
+      "official_success": false,
+      "failure_type": "agent_finished_unsuccessful",
+      "env_steps": 300,
+      "planner_calls": 18,
+      "input_tokens": 192972,
+      "output_tokens": 9286,
+      "cached_input_tokens": 0,
+      "wall_time_s": 121.37087750900537,
+      "planner_status": "completed",
+      "video_href": "videos/formal-030.mp4"
     },
     {
       "task": "hand_track.place_can_in_box",
@@ -688,7 +729,7 @@
       "cached_input_tokens": 0,
       "wall_time_s": 67.44978241994977,
       "planner_status": "completed",
-      "video_href": "videos/formal-029.mp4"
+      "video_href": "videos/formal-031.mp4"
     },
     {
       "task": "hand_track.place_can_in_box",
@@ -707,7 +748,7 @@
       "cached_input_tokens": 0,
       "wall_time_s": 161.65469922497869,
       "planner_status": "completed",
-      "video_href": "videos/formal-030.mp4"
+      "video_href": "videos/formal-032.mp4"
     },
     {
       "task": "hand_track.place_can_in_box",
@@ -726,7 +767,7 @@
       "cached_input_tokens": 0,
       "wall_time_s": 58.4460083800368,
       "planner_status": "completed",
-      "video_href": "videos/formal-031.mp4"
+      "video_href": "videos/formal-033.mp4"
     },
     {
       "task": "hand_track.place_can_in_box",
@@ -745,7 +786,7 @@
       "cached_input_tokens": 0,
       "wall_time_s": 83.78720851801336,
       "planner_status": "completed",
-      "video_href": "videos/formal-032.mp4"
+      "video_href": "videos/formal-034.mp4"
     },
     {
       "task": "hand_track.place_can_in_box",
@@ -764,7 +805,7 @@
       "cached_input_tokens": 0,
       "wall_time_s": 55.5481206132099,
       "planner_status": "completed",
-      "video_href": "videos/formal-033.mp4"
+      "video_href": "videos/formal-035.mp4"
     },
     {
       "task": "hand_track.place_can_in_box",
@@ -783,7 +824,7 @@
       "cached_input_tokens": 0,
       "wall_time_s": 176.8894453109242,
       "planner_status": "completed",
-      "video_href": "videos/formal-034.mp4"
+      "video_href": "videos/formal-036.mp4"
     },
     {
       "task": "hand_track.place_can_in_box",
@@ -802,7 +843,7 @@
       "cached_input_tokens": 0,
       "wall_time_s": 132.90365648223087,
       "planner_status": "completed",
-      "video_href": "videos/formal-035.mp4"
+      "video_href": "videos/formal-037.mp4"
     },
     {
       "task": "hand_track.place_can_in_box",
@@ -821,7 +862,7 @@
       "cached_input_tokens": 0,
       "wall_time_s": 142.93764021713287,
       "planner_status": "completed",
-      "video_href": "videos/formal-036.mp4"
+      "video_href": "videos/formal-038.mp4"
     },
     {
       "task": "hand_track.place_can_in_box",
@@ -840,7 +881,7 @@
       "cached_input_tokens": 0,
       "wall_time_s": 73.06519568897784,
       "planner_status": "completed",
-      "video_href": "videos/formal-037.mp4"
+      "video_href": "videos/formal-039.mp4"
     },
     {
       "task": "hand_track.place_can_in_box",
@@ -859,7 +900,7 @@
       "cached_input_tokens": 0,
       "wall_time_s": 88.47834650799632,
       "planner_status": "completed",
-      "video_href": "videos/formal-038.mp4"
+      "video_href": "videos/formal-040.mp4"
     },
     {
       "task": "hand_track.place_can_in_box",
@@ -878,7 +919,7 @@
       "cached_input_tokens": 0,
       "wall_time_s": 65.44956296123564,
       "planner_status": "completed",
-      "video_href": "videos/formal-039.mp4"
+      "video_href": "videos/formal-041.mp4"
     },
     {
       "task": "hand_track.place_can_in_box",
@@ -897,7 +938,7 @@
       "cached_input_tokens": 0,
       "wall_time_s": 164.93697924911976,
       "planner_status": "completed",
-      "video_href": "videos/formal-040.mp4"
+      "video_href": "videos/formal-042.mp4"
     },
     {
       "task": "hand_track.place_can_in_box",
@@ -916,7 +957,7 @@
       "cached_input_tokens": 0,
       "wall_time_s": 130.10959887411445,
       "planner_status": "completed",
-      "video_href": "videos/formal-041.mp4"
+      "video_href": "videos/formal-043.mp4"
     },
     {
       "task": "hand_track.place_can_in_box",
@@ -935,7 +976,7 @@
       "cached_input_tokens": 0,
       "wall_time_s": 101.44271103898063,
       "planner_status": "completed",
-      "video_href": "videos/formal-042.mp4"
+      "video_href": "videos/formal-044.mp4"
     },
     {
       "task": "hand_track.place_can_in_box",
@@ -954,7 +995,7 @@
       "cached_input_tokens": 0,
       "wall_time_s": 64.1923651508987,
       "planner_status": "completed",
-      "video_href": "videos/formal-043.mp4"
+      "video_href": "videos/formal-045.mp4"
     },
     {
       "task": "hand_track.place_can_in_box",
@@ -973,7 +1014,7 @@
       "cached_input_tokens": 0,
       "wall_time_s": 75.59447456523776,
       "planner_status": "completed",
-      "video_href": "videos/formal-044.mp4"
+      "video_href": "videos/formal-046.mp4"
     },
     {
       "task": "hand_track.place_can_in_box",
@@ -992,7 +1033,7 @@
       "cached_input_tokens": 0,
       "wall_time_s": 60.1061266050674,
       "planner_status": "completed",
-      "video_href": "videos/formal-045.mp4"
+      "video_href": "videos/formal-047.mp4"
     },
     {
       "task": "hand_track.place_can_in_box",
@@ -1011,7 +1052,7 @@
       "cached_input_tokens": 0,
       "wall_time_s": 77.34177959105,
       "planner_status": "completed",
-      "video_href": "videos/formal-046.mp4"
+      "video_href": "videos/formal-048.mp4"
     },
     {
       "task": "hand_track.place_can_in_box",
@@ -1030,7 +1071,7 @@
       "cached_input_tokens": 0,
       "wall_time_s": 87.39356535580009,
       "planner_status": "completed",
-      "video_href": "videos/formal-047.mp4"
+      "video_href": "videos/formal-049.mp4"
     },
     {
       "task": "hand_track.place_can_in_box",
@@ -1049,7 +1090,7 @@
       "cached_input_tokens": 0,
       "wall_time_s": 56.12145058205351,
       "planner_status": "completed",
-      "video_href": "videos/formal-048.mp4"
+      "video_href": "videos/formal-050.mp4"
     }
   ]
 }
